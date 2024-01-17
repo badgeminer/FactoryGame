@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>replit</title>
+  <link href="style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+    <div class="overlay" id="assets" hidden>
+        <!--<img src="assets/blank.png" id="blank">
+        <img src="assets/Wrench.png" id="wrench">
+        
+        
+        <img src="assets/items/sand.png" id="sand">
+        <img src="assets/items/silicon.png" id="silicon">
+        <img src="assets/items/SiWafer.png" id="SiWafer">
+        
+        <img src="assets/items/CPU.png" id="CPU">
+        <img src="assets/items/CPU.png" id="CPU2">
+        <img src="assets/items/CPU.png" id="CPU3">
+        
+        <img src="assets/items/RAM.png" id="RAM">
+        <img src="assets/items/RAM.png" id="RAM2">
+        <img src="assets/items/RAM.png" id="RAM2">
+        <img src="assets/items/RAM.png" id="RAM3">
+        <img src="assets/items/RAM.png" id="RAM4">
+        <img src="assets/items/RAM.png" id="RAM5">
+        
+        
+        <img src="assets/tiles/conveyor/duct.png" id="conveyor">
+        <img src="assets/tiles/storage/container.png" id="container">
+        <img src="assets/tiles/storage/vault.png" id="vault">
+        
+        <img src="assets/tiles/quary/quary.png" id="quary">
+        <img src="assets/tiles/quary/quary-drill.png" id="quary-drill">
+        <img src="assets/tiles/quary/adv_quary-drill.png" id="adv-quary-drill">
+        <img src="assets/tiles/SiliconSmelter.png" id="SiliconSmelter">
+        <img src="assets/tiles/Waferizer.png" id="Waferizer">
+        <img src="assets/tiles/Chipsetter.png" id="Chipsetter">
+        <img src="assets/tiles/conveyor/exportBay.png" id="exportBay">-->
+        <img src="assets/Wrench.png" id="Wrench">
+        <img src="assets/blank.png" id="blank">
+        <img src="assets/help.png" id="help">
+        <img src="assets/placeholder.png" id="placeholder">
+        <img src="assets/tiles/SiliconSmelter.png" id="SiliconSmelter">
+        <img src="assets/tiles/Waferizer.png" id="Waferizer">
+        <img src="assets/tiles/Chipsetter.png" id="Chipsetter">
+        <img src="assets/tiles/Etcher.png" id="Etcher">
+        <img src="assets/tiles/conveyor/duct.png" id="duct">
+        <img src="assets/tiles/conveyor/exportBay.png" id="exportBay">
+        <img src="assets/tiles/quary/quary-top.png" id="quary-top">
+        <img src="assets/tiles/quary/quary.png" id="quary">
+        <img src="assets/tiles/quary/quary-drill.png" id="quary-drill">
+        <img src="assets/tiles/quary/adv-quary-drill.png" id="adv-quary-drill">
+        <img src="assets/tiles/storage/container.png" id="container">
+        <img src="assets/tiles/storage/vault.png" id="vault">
+        <img src="assets/items/CPU.png" id="CPU">
+        <img src="assets/items/RAM.png" id="RAM">
+        <img src="assets/items/Sand.png" id="Sand">
+        <img src="assets/items/Si.png" id="Si">
+        <img src="assets/items/Si Wafer.png" id="Si Wafer">
+        <img src="assets/items/ram/Memory0.png" id="Memory0">
+        <img src="assets/items/ram/Memory1.png" id="Memory1">
+        <img src="assets/items/ram/Memory2.png" id="Memory2">
+        <img src="assets/items/ram/Memory3.png" id="Memory3">
+        <img src="assets/items/ram/Memory4.png" id="Memory4">
+        <img src="assets/items/ram/Memory5.png" id="Memory5">
+        <img src="assets/items/ram/Microchip0.png" id="Microchip0">
+        <img src="assets/items/ram/Microchip1.png" id="Microchip1">
+        <img src="assets/items/ram/Microchip2.png" id="Microchip2">
+        <img src="assets/items/cpu/CPU1.png" id="CPU1">
+        <img src="assets/items/cpu/CPU2.png" id="CPU2">
+        <img src="assets/items/cpu/CPU0.png" id="CPU0">
+        <img src="assets/items/cpu/CPU_Die.png" id="CPU_Die">
+        <img src="assets/items/pcb/PrintedCircuitBoard.png" id="PrintedCircuitBoard">
+        <img src="assets/items/pcb/CircuitBoard.png" id="CircuitBoard">
+
+
+
+        
+        <img src="https://raw.githubusercontent.com/Anuken/Mindustry/master/core/assets-raw/sprites/teams/team-derelict.png" id="derelict">
+        <img src="https://raw.githubusercontent.com/Anuken/Mindustry/master/core/assets-raw/sprites/rubble/rubble-2-0.png" id="rubble">
+    </div>
+    <canvas id="myCanvas"></canvas>
+    <div class="overlay" id="picker" hidden>
+        <canvas id='picker_canvas'></canvas>
+        <span class="color" id="hovered-color" ></span>
+        <span class="color" id="selected-color" ></span>
+    </div>
+    <div class="overlay" id="helpM" hidden>
+        <div id="helpMenu">
+            <span class=sep><h2>How To Play</h2></span>
+            <span class="helptxt imgCon">
+                <p>
+                    select a tile or tool by clicking on it,<br>
+                    build a factory, and profit,<br>
+                    Q and E to rotate tiles
+                </p>
+            </span>
+            <span class=sep><h2>Tiles</h2></span>
+            <span class="help imgCon">
+                <img src="assets/tiles/conveyor/duct.png"width="64">
+                <h3>Conveyor</h3><cost>$25</cost>
+                <p>Transports items</p>
+            </span>
+            <span class="help imgCon">
+                <img src="assets/tiles/storage/container.png"width="64">
+                <h3>Container</h3><teir>T1</teir><cost>$150</cost>
+                <p>Stores 20 items</p>
+            </span>
+            <span class="help imgCon">
+                <img src="assets/tiles/storage/vault.png"width="64">
+                <h3>Vault</h3><teir>T2</teir><cost>$300</cost>
+                <p>Stores 40 items</p>
+            </span>
+            <span class="help imgCon">
+                <img src="assets/tiles/conveyor/exportBay.png"width="64">
+                <h3>Export Bay</h3><cost>$200</cost>
+                <p>Sells items for money,<br><i>Tip: Dont sell sand</i></p>
+            </span>
+            
+            <span class="help imgCon">
+                <img src="assets/tiles/quary/quary.png"width="64">
+                <img src="assets/tiles/quary/quary-drill.png" width="64" class=top>
+                <h3>Quary</h3><teir>T1</teir><cost>$350</cost>
+                <p>Slowly mines Sand,<br><b>Needs frequent repairs</b></p>
+            </span>
+            <span class="help imgCon">
+                <img src="assets/tiles/quary/quary.png"width="64">
+                <img src="assets/tiles/quary/adv_quary-drill.png" width="64" class=top>
+                <h3>Advanced Quary</h3><teir>T2</teir><cost>$2.5k</cost>
+                <p>Mines Sand,<br><b>Needs semi-frequent repairs</b></p>
+            </span>
+            <span class="help imgCon">
+                <img src="assets/tiles/SiliconSmelter.png" width="64">
+                <h3>Silicon Smelter</h3><cost>$450</cost>
+                <p>Smelts Sand into Silicon,<br><b>Needs semi-frequent repairs</b></p>
+            </span>
+            <span class="help imgCon">
+                <img src="assets/tiles/Waferizer.png" width="64">
+                <h3>Waferizer</h3><cost>$750</cost>
+                <p>Presses Silicon into Silicon Wafers</p>
+            </span>
+            <span class="help imgCon">
+                <img src="assets/tiles/Chipsetter.png"width="64">
+                <img src="assets/items/CPU.png" width="32" class=Ctop>
+                <h3>Chipsetter</h3><i>CPU</i><teir>T1</teir><cost>$1k</cost>
+                <p>
+                    Makes CPUs from Silicon Wafers and Silicon,<br>
+                    <b>Has a 75% success rate</b>
+                </p>
+            </span>
+            <span class="help imgCon">
+                <img src="assets/tiles/Chipsetter.png"width="64">
+                <img src="assets/items/RAM.png" width="32" class=Ctop>
+                <h3>Chipsetter</h3><i>RAM</i><teir>T1</teir><cost>$1k</cost>
+                <p>
+                    Makes RAM from Silicon Wafers and Silicon,<br>
+                    <b>Has a 75% success rate</b>
+                </p>
+            </span>
+
+            <span class=sep><h2>Tools</h2></span>
+            <span class="help imgCon">
+                <img src="assets/Wrench.png"width="64">
+                <h3>Repair Tool</h3><i>Tool</i>
+                <p>Repairs the clicked tile for money</p>
+            </span>
+            <span class="help imgCon">
+                <img src="assets/Wrench.png"width="64">
+                <h3>S.E.I</h3><i>Mod</i>
+                <p><button>click to install S.E.I</button></p>
+            </span>
+        </div>
+    </div>
+    <button class=menu onclick="tglHelp()"><img src="assets/help.png" id="help"></button>
+    <script src="data.js"></script>
+    <script src="rend.js"></script>
+    <script src="picker.js"></script>
+    <script src="script.js"></script>
+
+      <!--
+      This script places a badge on your repl's full-browser view back to your repl's cover
+      page. Try various colors for the theme: dark, light, red, orange, yellow, lime, green,
+      teal, blue, blurple, magenta, pink!
+      -->
+      <script src="https://replit.com/public/js/replit-badge-v2.js" theme="dark" position="bottom-right"></script>
+</body>
+
+</html>

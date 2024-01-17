@@ -1,0 +1,158 @@
+html, body {
+  width:  100%;
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  font-family: 'monospace', monospace;
+  background-color: black;
+  color: white;
+  margin: 0px;
+  font-size: 12px;
+    width: 100%;
+
+}
+html {
+  height: 100%;
+}
+body,.frmd {
+  min-height: 90%;
+}
+header {
+  background-color: #050505;
+  color: #e8e8e8;
+  padding: 2px;
+  text-align: center;
+  font-size: 14px;
+  width:99%;
+}
+header a {
+    color: #ffffff;
+    text-decoration: none;
+    transition: padding 0.25s;
+    transition: background-color 0.25s
+}
+header a:hover {
+    color: #ffffff;
+    text-decoration: none;
+    background-color:forestgreen;
+    padding: 2.5px;
+    transition: padding 0.25s;
+    transition: background-color 0.25s
+}
+.overlay {
+    position: absolute;
+    top:0;
+    left:0;
+}
+.color {
+    width:50px;
+    height:50px
+}
+.menu {
+    position: absolute;
+    top:0;
+    right:5px;
+    background-color:#00000000;
+    border:none;
+    opacity: 15%;
+    transition:opacity 1s;
+}
+.menu:hover {
+    opacity: 100%;
+    transition:opacity 1s;
+}
+
+.imgCon {
+  position: relative;
+}
+
+.top {
+  position: absolute;
+  left: 0;
+}
+.Ctop {
+  position: absolute;
+  left: 16px;
+  bottom: 18px;
+}
+
+.help img {
+    grid-area: img;
+    padding: 2px;
+    image-rendering: pixelated;
+}
+
+.help p {
+    display:inline;
+    grid-area: main;
+    padding: 0px;
+    margin: 0px;
+    margin-bottom: 2px;
+}
+.help i {
+    display:inline;
+    grid-area: kind;
+    padding: 0px;
+    padding-left: 3px;
+    margin: 0px;
+}
+.help teir {
+    display:inline;
+    grid-area: teir;
+    padding: 0px;
+    padding-left: 3px;
+    margin: 0px;
+    font-style: italic;
+    font-weight: bold;
+}
+
+.help cost {
+    display:inline;
+    grid-area: cost;
+    padding: 0px;
+    padding-left: 3px;
+    margin: 0px;
+    font-weight: bold;
+}
+
+.help h3 {
+    grid-area: hdr;
+    padding: 0px;
+    margin: 0px;
+}
+
+.help {
+    width: 250px;
+    height: 68px;
+    justify-content: start;
+    display:grid;
+    grid-template-areas:
+    'img hdr kind teir cost'
+    'img main main main main'
+}
+.helpTXT {
+    width: 250px;
+    height: 68px;
+    justify-content: start;
+    display:grid;
+    grid-template-areas:
+    'img hdr kind teir cost'
+    'img main main main main'
+}
+
+#helpMenu {
+    display: flex;
+    padding: 2px;
+    flex-flow: row wrap;
+    background-color: #2b2b2bc0;
+}
+#helpMenu span {
+    flex: auto;
+    margin: 2px;
+}
+.sep {
+    width:100%;
+    flex: 1 1 100px;
+}
