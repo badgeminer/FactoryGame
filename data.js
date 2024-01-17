@@ -92,6 +92,7 @@ const assets = {
     "Waferizer":document.getElementById("Waferizer") || errImg,
     "Chipsetter":document.getElementById("Chipsetter") || errImg,
     "Etcher":document.getElementById("Etcher") || errImg,
+    "PCB-Maker":document.getElementById("PCB-Maker") || errImg,
     "duct":document.getElementById("duct") || errImg,
     "exportBay":document.getElementById("exportBay") || errImg,
     "quary-top":document.getElementById("quary-top") || errImg,

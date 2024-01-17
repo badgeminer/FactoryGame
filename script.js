@@ -4,6 +4,8 @@ const wctx = new Wctx(ctx)
 canvas.width = window.innerWidth - 3;
 canvas.height = window.innerHeight - 2.5;
 ctx.imageSmoothingEnabled = false;
+assets["rubble"] = document.getElementById('rubble')
+assets["derelict"] = document.getElementById('derelict')
 
 var money = 5000
 var ui = []
@@ -480,7 +482,8 @@ var Recips = {
     "RAM_Chipsetter": { i: ['Microchip0',"PrintedCircuitBoard"], o: 'Memory0' },
     "CPU_Etcher": { i: ['Si', 'Si Wafer'], o: 'CPU_Die' },
     "RAM_Etcher": { i: ['Si', 'Si Wafer'], o: 'Microchip0' },
-    "PCB_Etcher": { i: ['CircuitBoard'], o: 'PrintedCircuitBoard' }
+    "PCB_Etcher": { i: ['CircuitBoard'], o: 'PrintedCircuitBoard' },
+    "PCB_Maker": { i: [], o: 'CircuitBoard' }
 }
 
 function drawResp() {
@@ -597,6 +600,8 @@ TileRegistry.register(
         }
     })
 
+
+
 TileRegistry.register(
 class AdvancedQuary extends ProductionTile {
     rend = (new renderer(ctx)).add(new renderer_image('quary', 0, 0, false)).add(new renderer_image('adv-quary-drill', 10, 0, false))
@@ -688,6 +693,28 @@ TileRegistry.register(
 class PCB_Etcher extends Etcher {
     constructor(x, y) {
         super(x, y, "PrintedCircuitBoard","PCB")
+    }
+})
+TileRegistry.register(
+class PCB_Maker extends ProductionTile {
+    rend = (new renderer(ctx)).add(new renderer_image('PCB-Maker', 0, 0, false)).add(new renderer_item_output(0, 0, false))
+
+    cost = 350
+    constructor(x, y) {
+
+        super(x, y, 0, 5, [], 2, 50, 0.1);
+        this.outputItem = "CircuitBoard"
+    }
+    draw(x, y) {
+        //wctx.fillRect("quary",x, y, tileSz, tileSz)
+        //wctx.fillText(`${this.arrow}${this.timer}`, (x), (y) + 16, tileSz)
+        this.rend.draw(x, y, (this.direction - 1) * 90, this)
+    }
+    process() {
+        this.Inventory.addItem('CircuitBoard')
+    }
+    tick() {
+        super.tick()
     }
 })
 
