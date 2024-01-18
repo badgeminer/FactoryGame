@@ -432,8 +432,9 @@ class Chipsetter extends ProductionTile {
         this.rend.draw(x, y, (this.direction - 1) * 90, this)
     }
     process() {
-        var si = this.InputInventory.sendNextOfItem('Si')
-        var si = this.InputInventory.sendNextOfItem('Si Wafer')
+        for (i of this.requirements) {
+            this.InputInventory.sendNextOfItem(i)
+        }
         this.Inventory.addItem(this.outputItem)
     }
 }
@@ -446,11 +447,13 @@ function baseMaterialsEtch(i) {
             ]
         case "PCB":
             return [
-                "CircuitBoard"
+                "CircuitBoard",
+                "Copper"
             ]
         default:
             return [
-                'ERROR'
+                'ERROR',
+                "R"
             ]
     }
 }
@@ -468,9 +471,10 @@ class Etcher extends ProductionTile {
         this.rend.draw(x, y, (this.direction - 1) * 90, this)
     }
     process() {
-        var si = this.InputInventory.sendNextOfItem('Si')
+        for (i of this.requirements) {
+            this.InputInventory.sendNextOfItem(i)
+        }
         this.Inventory.addItem(this.outputItem)
-        var si = this.InputInventory.sendNextOfItem('Si Wafer')
     }
 }
 
@@ -480,10 +484,11 @@ var Recips = {
     "Waferizer": { i: ['Si'], o: 'Si Wafer' },
     "CPU_Chipsetter": { i: ['CPU_Die',"PrintedCircuitBoard"], o: 'CPU0' },
     "RAM_Chipsetter": { i: ['Microchip0',"PrintedCircuitBoard"], o: 'Memory0' },
-    "CPU_Etcher": { i: ['Si', 'Si Wafer'], o: 'CPU_Die' },
-    "RAM_Etcher": { i: ['Si', 'Si Wafer'], o: 'Microchip0' },
-    "PCB_Etcher": { i: ['CircuitBoard'], o: 'PrintedCircuitBoard' },
-    "PCB_Maker": { i: [], o: 'CircuitBoard' }
+    "CPU_Etcher": { i: baseMaterialsEtch('Si'), o: 'CPU_Die' },
+    "RAM_Etcher": { i: baseMaterialsEtch('Si'), o: 'Microchip0' },
+    "PCB_Etcher": { i:baseMaterialsEtch('PCB'), o: 'PrintedCircuitBoard' },
+    "PCB_Maker": { i: [], o: 'CircuitBoard' },
+    "Sifter": {i: ["Sand"],o:"Copper"}
 }
 
 function drawResp() {
@@ -619,6 +624,26 @@ class AdvancedQuary extends ProductionTile {
         if (Math.random() >= 0.25) {
             this.Inventory.addItem('Sand')
         }
+    }
+    tick() {
+        super.tick()
+    }
+})
+TileRegistry.register(
+class Sifter extends ProductionTile {
+    rend = (new renderer(ctx)).add(new renderer_image('Sifter', 0, 0, false))
+    cost = 350
+    constructor(x, y) {
+        super(x, y, 2, 5, ["Sand"], 2, 50, 0.01);
+    }
+    draw(x, y) {
+        //wctx.fillRect("quary",x, y, tileSz, tileSz)
+        //wctx.fillText(`${this.arrow}${this.timer}`, (x), (y) + 16, tileSz)
+        this.rend.draw(x, y, (this.direction - 1) * 90, this)
+    }
+    process() {
+        var sand = this.InputInventory.sendNextOfItem('Sand')
+        this.Inventory.addItem('Copper')
     }
     tick() {
         super.tick()
